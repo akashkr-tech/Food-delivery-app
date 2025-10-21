@@ -23,6 +23,7 @@
     text-align: center;
     margin: 20px 0px;
     overflow-x: scroll ;
+    cursor: pointer;
 
      
 }
@@ -33,9 +34,9 @@
 .explore-menu-list-item-img{
     width: 7.5vw;
     min-width: 80px;
-    cursor: pointer;
     border-radius: 50%;
     transition: 0.2s;
+    cursor: pointer;
 }
 
 .explore-menu-list-item p{

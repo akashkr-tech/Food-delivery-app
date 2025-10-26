@@ -2,9 +2,13 @@ import React, { useContext } from "react";
 import "./Cart.css";
 import { StoreContext } from "../../context/StoreContext";
 import { food_list } from "../../assets/assets";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const { cartItems, food_list, removeFromCart, getTotalCartAmount } = useContext(StoreContext);
+  const { cartItems, food_list, removeFromCart, getTotalCartAmount } =
+    useContext(StoreContext);
+
+  const navigate = useNavigate();
 
   return (
     <div className="cart">
@@ -29,7 +33,9 @@ const Cart = () => {
                   <p>${item.price}</p>
                   <p>{cartItems[item._id]}</p>
                   <p>${item.price * cartItems[item._id]}</p>
-                  <p onClick={()=>removeFromCart(item._id)} className="cross">x</p>
+                  <p onClick={() => removeFromCart(item._id)} className="cross">
+                    x
+                  </p>
                 </div>
                 <hr />
               </div>
@@ -43,21 +49,23 @@ const Cart = () => {
           <h2>Cart Totals</h2>
           <div>
             <div className="cart-total-details">
-               <p>Subtotal</p>
-               <p>${getTotalCartAmount()}</p>
+              <p>Subtotal</p>
+              <p>${getTotalCartAmount()}</p>
             </div>
             <hr />
             <div className="cart-total-details">
-                <p>DElivery Fee</p>
-                <p>${2}</p>
+              <p>DElivery Fee</p>
+              <p>${getTotalCartAmount()===0?0:2}</p>
             </div>
             <hr />
             <div className="cart-total-details">
               <b>Total</b>
-              <b>${getTotalCartAmount()+2}</b>
+              <b>${getTotalCartAmount()===0?0: getTotalCartAmount() + 2}</b>
             </div>
           </div>
-          <button>PROCEED TO CHECKOUT</button>
+          <button onClick={() => navigate("/order")}>
+            PROCEED TO CHECKOUT
+          </button>
         </div>
         <div className="cart-promocode">
           <div>

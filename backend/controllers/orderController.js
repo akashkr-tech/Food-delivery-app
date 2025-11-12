@@ -1,4 +1,4 @@
-import orderModel from "../models/orderModel";
+import orderModel from "../models/orderModel.js";
 import userModel from '../models/userModel.js';
 import Stripe from "stripe"
 
@@ -49,8 +49,11 @@ const placeOrder = async (req,res) =>{
         cancel_url:`${frontend_url}/verify?success=false&orderId=${newOrder._id}`,
      })
 
-   }catch(error){
+     res.json({success:true,session_url:session.url})
 
+   }catch(error){
+     console.log(error);
+     res.json({success:false,message:"Error"})
    }
 
 }

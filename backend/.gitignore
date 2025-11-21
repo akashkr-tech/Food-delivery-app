@@ -16,6 +16,9 @@ yarn.lock
 # Logs
 logs/
 *.log
+backend/.env
+.env
+*.env
 
 # Operating System Files
 .DS_Store
